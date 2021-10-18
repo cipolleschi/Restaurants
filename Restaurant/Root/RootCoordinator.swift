@@ -8,15 +8,20 @@
 import Foundation
 import UIKit
 
+public struct RootRequirements: Requirements {
+    let dependencies: Dependencies
+}
+
 class RootCoordinator {
-    private var dependencies: Dependencies
+    
+    private let dependencies: Dependencies
     
     private var presentingViewController: UIViewController? {
         return self.dependencies.window.rootViewController
     }
     
-    init(dependencies: Dependencies) {
-        self.dependencies = dependencies
+    fileprivate init(requirements: RootRequirements) {
+        self.dependencies = requirements.dependencies
     }
     
     func start() {
@@ -30,11 +35,10 @@ class RootCoordinator {
         guard let presentingViewController = self.presentingViewController else {
             return
         }
-        let loadingCoordinator = LoadingCoordinator(
-            presentingViewController: presentingViewController,
-            dependencies: self.dependencies
-        )
-        loadingCoordinator.start()
+        
+        self.dependencies.coordinatorFactoryProvider
+            .loadingCoordinator(presentingViewController: presentingViewController, dependencies: dependencies)
+            .start()
     }
     
     func dismissLoading() {
@@ -44,16 +48,29 @@ class RootCoordinator {
     }
     
     func showRestaurants(_ restaurants: [Restaurant]) {
-        DispatchQueue.main.async {
-            guard let presentingViewController = self.presentingViewController else {
+        DispatchQueue.main.async { [weak self] in
+            
+            guard
+                let self = self,
+                let presentingViewController = self.presentingViewController else {
                 return
             }
             
-            let restaurantsCoordinator = RestaurantsCoordinator(
-                presentingViewController: presentingViewController,
-                dependencies: self.dependencies
-            )
-            restaurantsCoordinator.start(restaurants: restaurants)
+            self.dependencies.coordinatorFactoryProvider
+                .restaurantsCoordinator(
+                    presentingViewController: presentingViewController,
+                    dependencies: self.dependencies,
+                    restaurants: restaurants
+                )
+                .start()
         }
+    }
+}
+
+extension RootCoordinator: Coordinator {}
+
+struct RootCoordinatorFactory: CoordinatorFactory {
+    func makeCoordinator(for requirements: RootRequirements) -> Coordinator {
+        return RootCoordinator(requirements: requirements)
     }
 }

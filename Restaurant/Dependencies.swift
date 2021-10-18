@@ -9,13 +9,16 @@ import UIKit
 
 struct Dependencies {
     let window: UIWindow
-    let networkService: NetworkService
+    let networkService: NetworkService   
+    let coordinatorFactoryProvider: CoordinatorFactoryProvider
     
     init(
         window: UIWindow,
-        networkService: NetworkService = NetworkService()
+        networkService: NetworkService = NetworkService(),
+        coordinatorFactoryProvider: CoordinatorFactoryProvider = LiveCoordinatorFactoryProvider()
     ) {
         self.window = window
         self.networkService = networkService
+        self.coordinatorFactoryProvider = coordinatorFactoryProvider
     }
 }

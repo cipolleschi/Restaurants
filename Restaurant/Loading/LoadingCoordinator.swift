@@ -7,13 +7,18 @@
 
 import UIKit
 
-final class LoadingCoordinator {
+public struct LoadingRequirements: Requirements {
+    let presentingViewController: UIViewController
+    let dependencies: Dependencies
+}
+
+private final class LoadingCoordinator {
     private weak var presentingViewController: UIViewController?
     private var dependencies: Dependencies
     
-    init(presentingViewController: UIViewController, dependencies: Dependencies) {
-        self.presentingViewController = presentingViewController
-        self.dependencies = dependencies
+    fileprivate init(requirements: LoadingRequirements) {
+        self.presentingViewController = requirements.presentingViewController
+        self.dependencies = requirements.dependencies
     }
     
     func start() {
@@ -23,4 +28,12 @@ final class LoadingCoordinator {
         self.presentingViewController?.present(loadingViewController, animated: true, completion: nil)
     }
     
+}
+
+extension LoadingCoordinator: Coordinator {}
+
+public struct LoadingCoordinatorFactory: CoordinatorFactory {
+    func makeCoordinator(for requirements: LoadingRequirements) -> Coordinator {
+        return LoadingCoordinator(requirements: requirements)
+    }
 }
