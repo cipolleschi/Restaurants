@@ -14,7 +14,7 @@ public struct LoadingRequirements: Requirements {
 
 private final class LoadingCoordinator {
     private weak var presentingViewController: UIViewController?
-    private var dependencies: Dependencies
+    private let dependencies: Dependencies
     
     fileprivate init(requirements: LoadingRequirements) {
         self.presentingViewController = requirements.presentingViewController

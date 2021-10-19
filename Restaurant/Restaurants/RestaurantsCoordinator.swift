@@ -15,7 +15,7 @@ public struct RestaurantsRequirements: Requirements {
 
 private final class RestaurantsCoordinator {
     private weak var presentingViewController: UIViewController?
-    private var dependencies: Dependencies
+    private let dependencies: Dependencies
     private let restaurants: [Restaurant]
     
     fileprivate init(

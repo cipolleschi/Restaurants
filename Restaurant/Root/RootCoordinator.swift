@@ -13,7 +13,6 @@ public struct RootRequirements: Requirements {
 }
 
 class RootCoordinator {
-    
     private let dependencies: Dependencies
     
     private var presentingViewController: UIViewController? {
