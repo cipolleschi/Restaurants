@@ -22,6 +22,8 @@
 		4635302D271D9E880056875B /* RestaurantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4635302C271D9E880056875B /* RestaurantsViewController.swift */; };
 		4635302F271DA94F0056875B /* RestaurantsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4635302E271DA94F0056875B /* RestaurantsCoordinator.swift */; };
 		46353031271DA9CE0056875B /* Restaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46353030271DA9CE0056875B /* Restaurants.swift */; };
+		46353033271DBC960056875B /* CoordinatorFactoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46353032271DBC960056875B /* CoordinatorFactoryProvider.swift */; };
+		46353036271DDEF50056875B /* CoordinationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46353035271DDEF50056875B /* CoordinationProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		4635302C271D9E880056875B /* RestaurantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewController.swift; sourceTree = "<group>"; };
 		4635302E271DA94F0056875B /* RestaurantsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsCoordinator.swift; sourceTree = "<group>"; };
 		46353030271DA9CE0056875B /* Restaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurants.swift; sourceTree = "<group>"; };
+		46353032271DBC960056875B /* CoordinatorFactoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryProvider.swift; sourceTree = "<group>"; };
+		46353035271DDEF50056875B /* CoordinationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinationProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		46353002271C20920056875B /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				46353034271DDEE60056875B /* CoordinationProtocols */,
 				4635302B271D9E670056875B /* Restaurants */,
 				46353028271D88170056875B /* Dependencies */,
 				46353023271D746F0056875B /* Loading */,
@@ -84,6 +89,7 @@
 				4635300E271C209A0056875B /* LaunchScreen.storyboard */,
 				46353011271C209A0056875B /* Info.plist */,
 				46353021271D737D0056875B /* Dependencies.swift */,
+				46353032271DBC960056875B /* CoordinatorFactoryProvider.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -132,6 +138,14 @@
 				4635302E271DA94F0056875B /* RestaurantsCoordinator.swift */,
 			);
 			path = Restaurants;
+			sourceTree = "<group>";
+		};
+		46353034271DDEE60056875B /* CoordinationProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				46353035271DDEF50056875B /* CoordinationProtocols.swift */,
+			);
+			path = CoordinationProtocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,12 +217,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46353036271DDEF50056875B /* CoordinationProtocols.swift in Sources */,
 				4635302A271D88210056875B /* NetworkService.swift in Sources */,
 				46353022271D737D0056875B /* Dependencies.swift in Sources */,
 				46353031271DA9CE0056875B /* Restaurants.swift in Sources */,
 				4635302D271D9E880056875B /* RestaurantsViewController.swift in Sources */,
 				4635301E271C80270056875B /* RootViewModel.swift in Sources */,
 				4635301B271C800C0056875B /* Distance.swift in Sources */,
+				46353033271DBC960056875B /* CoordinatorFactoryProvider.swift in Sources */,
 				46353025271D747D0056875B /* LoadingViewController.swift in Sources */,
 				46353019271C7FFE0056875B /* RestaurantType.swift in Sources */,
 				46353008271C20920056875B /* RootViewController.swift in Sources */,

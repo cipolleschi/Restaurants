@@ -17,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow()
         self.window = window
         self.dependencies = Dependencies(window: window)
-        let rootCoordinator = RootCoordinator(dependencies: dependencies)
-        rootCoordinator.start()
+        self.dependencies.coordinatorFactoryProvider
+            .rootCoordinator(dependencies: self.dependencies)
+            .start()
         window.makeKeyAndVisible()
         return true
     }
