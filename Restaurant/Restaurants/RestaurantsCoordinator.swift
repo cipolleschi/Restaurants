@@ -9,14 +9,16 @@ import UIKit
 
 final class RestaurantsCoordinator {
     private weak var presentingViewController: UIViewController?
-    private var dependencies: Dependencies
+    private let dependencies: Dependencies
+    private let restaurants: [Restaurant]
     
-    init(presentingViewController: UIViewController, dependencies: Dependencies) {
+    init(presentingViewController: UIViewController, dependencies: Dependencies, restaurants: [Restaurant]) {
         self.presentingViewController = presentingViewController
         self.dependencies = dependencies
+        self.restaurants = restaurants
     }
     
-    func start(restaurants: [Restaurant]) {
+    func start() {
         let viewModel = RestaurantsViewModel(restaurants: restaurants)
         let viewController = RestaurantsViewController(viewModel: viewModel)
         self.presentingViewController?.show(viewController, sender: self)

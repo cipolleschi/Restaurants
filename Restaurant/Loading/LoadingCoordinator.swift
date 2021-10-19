@@ -9,7 +9,7 @@ import UIKit
 
 final class LoadingCoordinator {
     private weak var presentingViewController: UIViewController?
-    private var dependencies: Dependencies
+    private let dependencies: Dependencies
     
     init(presentingViewController: UIViewController, dependencies: Dependencies) {
         self.presentingViewController = presentingViewController

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class RootCoordinator {
-    private var dependencies: Dependencies
+    private let dependencies: Dependencies
     
     private var presentingViewController: UIViewController? {
         return self.dependencies.window.rootViewController
@@ -51,9 +51,10 @@ class RootCoordinator {
             
             let restaurantsCoordinator = RestaurantsCoordinator(
                 presentingViewController: presentingViewController,
-                dependencies: self.dependencies
+                dependencies: self.dependencies,
+                restaurants: restaurants
             )
-            restaurantsCoordinator.start(restaurants: restaurants)
+            restaurantsCoordinator.start()
         }
     }
 }
